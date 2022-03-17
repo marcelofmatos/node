@@ -17,9 +17,13 @@ WORKDIR /usr/src/app
 # Bundle app source
 #COPY . .
 
-COPY app-entrypoint.sh /usr/local/bin
+COPY app-entrypoint.sh /
 
+RUN chmod +x /app-entrypoint.sh 
 
 EXPOSE 3000
+
+ENV PORT=3000
+
 CMD [ "node", "server.js" ]
-ENTRYPOINT [ "app-entrypoint.sh" ]
+ENTRYPOINT [ "/app-entrypoint.sh" ]
