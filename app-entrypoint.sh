@@ -14,5 +14,8 @@ if [ -f /usr/src/app/.gitmodules ]; then
 
 fi;
 
+git pull 
+
+npm install 
 
 exec "$@"
