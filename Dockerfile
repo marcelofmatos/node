@@ -17,6 +17,9 @@ WORKDIR /usr/src/app
 # Bundle app source
 #COPY . .
 
+COPY app-entrypoint.sh /usr/local/bin
+
+
 EXPOSE 3000
 CMD [ "node", "server.js" ]
 ENTRYPOINT [ "app-entrypoint.sh" ]
