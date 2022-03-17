@@ -1,5 +1,7 @@
 FROM node:16
 
+RUN apt update && apt install git -y && rm -rf /var/lib/apt/lists/*
+
 # Create app directory
 WORKDIR /usr/src/app
 
