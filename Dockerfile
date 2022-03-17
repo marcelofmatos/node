@@ -19,3 +19,4 @@ WORKDIR /usr/src/app
 
 EXPOSE 3000
 CMD [ "node", "server.js" ]
+ENTRYPOINT [ "app-entrypoint.sh" ]
