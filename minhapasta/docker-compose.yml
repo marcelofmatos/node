@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+
+   www:
+     image: hubdocker.socialme.com.br/socialme/node:test
+     entrypoint: "node server.js"
+     #entrypoint: "tail -f /etc/hosts"
+     #command: "node server.js"
+     #command: "tail -f /etc/hosts"
+     environment:
+       URL_REPOSITORIO: https://SocialMeDev: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@github.com/SocialMeDev/sme-api-development.git
+       DEBUG: "true"
+     volumes:
+       - teste-api-codigo:/usr/src/app
+     networks:
+       - default
+       - proxy
+     deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints: [node.hostname == instance-2-linux-socialme-apps]
+      labels:
+        - traefik.enable=true
+        - traefik.http.routers.teste-api-www.tls.certresolver=myresolver
+        - traefik.http.services.teste-api-www.loadbalancer.server.port=3000
+       
+
+networks:
+  proxy:
+    name: proxy
+    driver: local
+    
+volumes:
+  teste-api-codigo:
+    driver: local
