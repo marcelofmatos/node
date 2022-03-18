@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 if [ ! -f /usr/src/app/package.json ]; then
   
